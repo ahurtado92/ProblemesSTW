@@ -8,7 +8,7 @@ f1 = x => Promise.resolve(1);
 p.then(f1).catch(f2)
 p.then(f1,f2).catch()
 
-var primiseToCallback = function(f) {
+var promiseToCallback = function(f) {
 	return function(x, callback) {
 		f(x).then(res => {
 				callback(null, r)
@@ -21,4 +21,4 @@ var primiseToCallback = function(f) {
 f(x).then(XXX)
 g(x, function(err, res) {res = XXX })
 
-g = primiseToCallback(f)
+g = promiseToCallback(f)
