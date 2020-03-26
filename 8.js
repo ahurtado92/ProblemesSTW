@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-f6 = function (llista, callback) {
+var f6 = function (llista, callback) {
     let result = [];
 
     let readFiles = new Promise((resolve, reject) => {
