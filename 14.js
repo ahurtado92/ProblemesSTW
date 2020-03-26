@@ -1,23 +1,23 @@
 function Counter() {
     this.a = 1;
-    this.notify = null;
+    this.notify = 1;
 
-    this.inc = function () {
+    this.inc = (function () {
         this.a++;
-        if (this.notify != null) {
+        if ((this.notify != null) && (this.notify instanceof Function)) {
             this.notify(this.a);
         }
-    }
+    });
 
-    this.count = function () {
+    this.count = (function () {
         return this.a;
-    }
+    });
 
-    this.setNotify = function (value) {
-        if ((this.notify != null) && (this.notify instanceof Function)) {
+    this.setNotify = (function (value) {
+        if (value instanceof Function) {
             this.notify = value;
         }
-    }
+    });
 
 }
 
