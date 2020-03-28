@@ -1,24 +1,16 @@
-//exercici 25
-
-f1 = x => x+1;
-f1 = x => Promise.resolve(1);
-
-//p = Promise.resolve(0);
-
-p.then(f1).catch(f2);
-p.then(f1,f2).catch();
-
-var promiseToCallback = function(f) {
-	return function(x, callback) {
-		f(x).then(res => {
-				callback(null, r);
-			},
-			err => {callback(err, null);}
-		)			
-	}
+let promiseToCallback = function (f) {
+    return function (x, callback) {
+        f(x).then((response) => callback(null, response), (response) => callback(response, null));
+    };
 };
 
-f(x).then(XXX);
-g(x, function(err, res) {res = XXX });
+let isEven = x => new Promise((resolve, reject) => {
+    x % 2 ? reject(x) : resolve(x);
+});
 
-g = promiseToCallback(f);
+let isEvenCallback = promiseToCallback(isEven);
+
+isEven(2).then(() => console.log("OK"), () => console.log("KO"));
+isEvenCallback(2, (err, res) => console.log(err, res));
+isEven(3).then(() => console.log("OK"), () => console.log("KO"));
+isEvenCallback(3, (err, res) => console.log(err, res));
