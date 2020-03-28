@@ -1,5 +1,15 @@
 const fs = require('fs');
 
+var enhancedFutureToPromise = function () {
+    return new Promise(
+        (resolve, reject) => {
+            enhancedFuture.registerCallback(ef => {
+                resolve(ef.result);
+            })
+        }
+    );
+}
+
 var asyncToEnhancedFuture = function (f) {
     return (fileName) => {
 
@@ -27,9 +37,9 @@ var asyncToEnhancedFuture = function (f) {
 
         return resFuture;
     }
-};
+}
 
 readIntoEnhancedFuture = asyncToEnhancedFuture(fs.readFile);
-enhancedFuture = readIntoEnhancedFuture('a1.txt');
-enhancedFuture.registerCallback(function (ef) { console.log(ef) });
-
+var enhancedFuture = readIntoEnhancedFuture('a1.txt');
+var promise = enhancedFutureToPromise(enhancedFuture);
+promise.then(console.log);
