@@ -1,0 +1,12 @@
+h1, h2, h3 {
+	text-align: center
+}
+
+p {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+#noms {
+	text-align: center
+}
