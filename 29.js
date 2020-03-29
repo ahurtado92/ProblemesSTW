@@ -1,7 +1,10 @@
 var mergedPromise = function (p) {
-    return new Promise((resolve, reject) => {
-        p.then(resolve);
-        p.catch(resolve);
+    return new Promise((resolve) => {
+        p.then((data) => {
+            resolve(data);
+        }).catch((data) => {
+            resolve(data);
+        });
     });
 };
 
