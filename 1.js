@@ -1,5 +1,5 @@
-function f1(param) {
+let f1 = function (param) {
     console.log(param);
-}
+};
 
-f1(3)
+f1(3);

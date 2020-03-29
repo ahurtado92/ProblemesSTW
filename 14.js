@@ -21,7 +21,7 @@ function Counter() {
 
 }
 
-var o3 = new Counter();
+let o3 = new Counter();
 o3.setNotify(function (a) {
     console.log(a);
 });

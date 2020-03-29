@@ -1,6 +1,6 @@
-function f4(a,b) {
+let f4 = function (a,b) {
     return a+b;
-}
+};
 
 let llistaA = [1,2,3,4];
 

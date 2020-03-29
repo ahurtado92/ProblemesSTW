@@ -1,4 +1,4 @@
-var mergedPromise = function (p) {
+let mergedPromise = function (p) {
     return new Promise((resolve) => {
         p.then((data) => {
             resolve(data);

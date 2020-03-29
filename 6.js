@@ -1,11 +1,11 @@
-function f2(a) {
+let f2 = function (a) {
     if (a >= 0){
         a=2*a
     }else{
         a=-1
     }
     return a
-}
+};
 
 function f5(a,b,callback) {
     //a és un objecte, b és una funció, i c és una funció

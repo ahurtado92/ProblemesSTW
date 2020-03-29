@@ -1,4 +1,4 @@
-var O = function () {
+let O = function () {
     this.count = 0;
     this.notify = null;
 

@@ -30,7 +30,7 @@ class DecreasingCounter extends Counter {
     });
 }
 
-var dc = new DecreasingCounter();
+let dc = new DecreasingCounter();
 dc.setNotify(function (a) {
     console.log(a);
 });

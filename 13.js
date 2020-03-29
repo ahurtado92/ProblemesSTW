@@ -1,6 +1,6 @@
-var o2 = (function () {
-    var count = 1;
-    var notify = null;
+let o2 = (function () {
+    let count = 1;
+    let notify = null;
     return {
         inc: function () {
             count++;
