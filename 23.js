@@ -49,7 +49,21 @@ p.then(x => console.log('Apartat B: ' + x));
  */
 p = Promise.resolve(0).then(x => x + 1).then(x => x + 2).catch(x => x + 4).then(x => x + 8);
 p.then(x => console.log('Apartat C: ' + x));
-//TODO: Desenvolupar explicació apartat C.
+
+/**
+ * La Promesa es resol retornant un 0, al primer 'then' tenim que:
+ * x = 0
+ * i, a més a això li sumem 2, amb el que ans queda:
+ * x = x + 1 = 1
+ * Al segon 'then' fem:
+ * x = x + 2 = 1 + 2 = 3
+ * Al catch, com la promesa va ser resolta, l'ignorem i no el fem.
+ * Al tercer i últim 'then' fem:
+ * x = x + 8 = 3 + 8 = 11
+ * Finalment tenim que:
+ * x = 11
+ */
+
 
 /**
  * Apartat D
