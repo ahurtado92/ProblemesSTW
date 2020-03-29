@@ -74,6 +74,19 @@ p.then(x => console.log('Apartat D: ' + x));
 //TODO: Desenvolupar explicació apartat D.
 
 /**
+ * La Promesa es rebutja retornant un 0.
+ * Com la promesa ha sigut rebutjada ens saltem els dos primers 'then', amb el que tenim que:
+ * x = 0
+ * Al catch, com la promesa va ser rebutjada, no l'ignorem i fem:
+ * x = x + 4 = 0 + 4 = 4
+ * Al 'then' després del catch no l'ignorem i fem:
+ * x = x + 8 = 4 + 8 = 12
+ * Amb el que tenim que:
+ * x = 12
+ */
+
+
+/**
  * Apartat E
  * @type {Promise<never>}
  */
