@@ -3,6 +3,7 @@ let promiseBarrier = function(n) {
 	let list = [];
 	let functions = [];
 	let counter = 0;
+	let params = [];
 
 	for(let i=0; i<n; i++) {
 		list[i] = function(x1) { // f1, f2, f3
