@@ -1,4 +1,6 @@
 const fs = require('fs');
+const {StringDecoder} = require('string_decoder');
+const decoder = new StringDecoder('utf8');
 
 var enhancedFutureToPromise = function () {
     return new Promise(
@@ -12,10 +14,9 @@ var enhancedFutureToPromise = function () {
 
 var asyncToEnhancedFuture = function (f) {
     return (fileName) => {
-
         let callback = null;
 
-        var resFuture = {
+        let resFuture = {
             isDone: false,
             result: null,
             registerCallback: function (p) {
@@ -28,11 +29,13 @@ var asyncToEnhancedFuture = function (f) {
         };
 
         f(fileName, (err, data) => {
-            resFuture.result = data;
+            resFuture.result = decoder.write(data);
             resFuture.isDone = true;
             if (callback !== null){
                 callback(resFuture);
             }
+
+            decoder.end();
         });
 
         return resFuture;
@@ -40,6 +43,6 @@ var asyncToEnhancedFuture = function (f) {
 }
 
 readIntoEnhancedFuture = asyncToEnhancedFuture(fs.readFile);
-var enhancedFuture = readIntoEnhancedFuture('a1.txt');
-var promise = enhancedFutureToPromise(enhancedFuture);
+let enhancedFuture = readIntoEnhancedFuture('a1.txt');
+let promise = enhancedFutureToPromise(enhancedFuture);
 promise.then(console.log);
