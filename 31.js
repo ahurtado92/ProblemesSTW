@@ -1,11 +1,8 @@
-var parallelPromise = function (p1, p2) {
-
+let parallelPromise = function (p1, p2) {
     return new Promise((resolve, reject) => {
-
-        var rp1;
-        var rp2;
-
-        var halfWay = false;
+        let rp1;
+        let rp2;
+        let halfWay = false;
 
         p1.then(x => {
             rp1 = x;
@@ -15,6 +12,7 @@ var parallelPromise = function (p1, p2) {
                 halfWay = true;
             }
         });
+
         p2.then(x => {
             rp2 = x;
             if (halfWay) {
@@ -23,10 +21,8 @@ var parallelPromise = function (p1, p2) {
                 halfWay = true;
             }
         });
-
     });
-
 };
 
-var p2 = parallelPromise(Promise.resolve(0), Promise.resolve(1));
+let p2 = parallelPromise(Promise.resolve(0), Promise.resolve(1));
 p2.then(console.log);

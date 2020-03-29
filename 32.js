@@ -1,14 +1,11 @@
 //Pagina 8 problemas, ejercicio 32
-var promiseBarrier = function(n) {
-	var list = [];
-
-	var functions = [];
-	var counter = 0;
+let promiseBarrier = function(n) {
+	let list = [];
+	let functions = [];
+	let counter = 0;
 
 	for(let i=0; i<n; i++) {
 		list[i] = function(x1) { // f1, f2, f3
-
-			// (1)
 			counter++;
 
 			return new Promise((resolve, reject) => {
@@ -17,18 +14,17 @@ var promiseBarrier = function(n) {
 				params[i] = x1;
 
 				// (2)
-				if(counter==n) {
+				if(counter === n) {
 					for (let j=0; j<n; j++){
-						var r = functions[j];
+						let r = functions[j];
 						r(params[j]);
 					}
-					
 				}
-
 			});
-		}
+		};
 	}
-	return list;
-}
 
-var list = promiseBarrier(3)
+	return list;
+};
+
+let list = promiseBarrier(3);
