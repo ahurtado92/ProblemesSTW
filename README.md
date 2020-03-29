@@ -5,20 +5,15 @@
 <body>
 </body>
 <header>
-<h1>Problemes</h1>
+<h1>STW [Problemes]</h1>
 <h2>node.js</h2>
 <hr>
-<h3>STW</h3>
+<p id='noms'>
+Antonio Hurtado (NIU: 1358933)
+<br>
+Paula Sarqui (NIU: 1368449)
+</p>
 </header>
-<br>
-<p>Nom: Antonio Hurtado
-<br>
-NIU: 1358933
-</p>
-<p>Nom: Paula Sarqui
-<br>
-NIU: 1368449
-</p>
 <div style="page-break-after: always;">
 </div>
 <div>
@@ -36,6 +31,7 @@ Accedint al repositori no només us podreu descarregar el codi en zip i llest pe
 </div>
 </div>
 <div>
+<h2>Índex</h2>
 <ol>
 <li><a href='#1'>Exercici 1</a></li>
 <li><a href='#2'>Exercici 2</a></li>
@@ -73,9 +69,7 @@ Accedint al repositori no només us podreu descarregar el codi en zip i llest pe
 </div>
 <div style="page-break-after: always;">
 </div>
-<div>
 <h4 id='1'>Exercici 1</h4>
-
 ```javascript
 let f1 = function (param) {
     console.log(param);
@@ -83,10 +77,7 @@ let f1 = function (param) {
 
 f1(3);
 ```
-</div>
-<div>
 <h4 id='2'>Exercici 2</h4>
-
 ```javascript
 let f2 = function (a) {
     if (a >= 0){
@@ -100,10 +91,7 @@ let f2 = function (a) {
 console.log(f2(3));
 console.log(f2(-1));
 ```
-</div>
-<div>
 <h4 id='3'>Exercici 3</h4>
-
 ```javascript
 let f3 = function (llista) {
     let llista2 = [];
@@ -118,10 +106,7 @@ let f3 = function (llista) {
 let l = f3([1,2,3]);
 console.log(l[0]+' '+l[1]+' '+l[2]);
 ```
-</div>
-<div>
 <h4 id='4'>Exercici 4</h4>
-
 ```javascript
 console.printaki = () => {
     console.log('aqui');
@@ -129,10 +114,7 @@ console.printaki = () => {
 
 console.printaki();
 ```
-</div>
-<div>
 <h4 id='5'>Exercici 5</h4>
-
 ```javascript
 let f4 = function (a,b) {
     return a+b;
@@ -146,10 +128,7 @@ let llistaB = llistaA.map(function (val) {
 
 console.log(llistaB[0]+' '+llistaB[1]+' '+llistaB[2]+' '+llistaB[3]);
 ```
-</div>
-<div>
 <h4 id='6'>Exercici 6</h4>
-
 ```javascript
 let f2 = function (a) {
     if (a >= 0){
@@ -169,10 +148,7 @@ f5(1, f2, function(r) {
     console.log(r);
 });
 ```
-</div>
-<div>
 <h4 id='7'>Exercici 7</h4>
-
 ```javascript
 let f7 = function () {
     let count = 1;
@@ -188,10 +164,7 @@ console.printaki2();
 console.printaki2();
 console.printaki2();
 ```
-</div>
-<div>
 <h4 id='8'>Exercici 8</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -223,10 +196,7 @@ f6(['a1.txt','a2.txt'],function (result) {
     console.log(result)
 });
 ```
-</div>
-<div>
 <h4 id='9'>Exercici 9</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -259,10 +229,7 @@ f6(['a1.txt','a2.txt'],function (result) {
     console.log(result)
 });
 ```
-</div>
-<div>
 <h4 id='10'>Exercici 10</h4>
-
 ```javascript
 /**
  * Tanto la función 'array.forEach()' como la función 'fs.readFile()' son funciones asíncronas
@@ -271,10 +238,7 @@ f6(['a1.txt','a2.txt'],function (result) {
  * que no se produzca un resultado consistente y/o correcto.
  */
 ```
-</div>
-<div>
 <h4 id='11'>Exercici 11</h4>
-
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -311,10 +275,7 @@ asyncMap(['a1.txt'], fs.readFile, function (a, b) {
     console.log(b);
 });
 ```
-</div>
-<div>
 <h4 id='12'>Exercici 12</h4>
-
 ```javascript
 let O = function () {
     this.count = 0;
@@ -338,10 +299,7 @@ o1.notify = function (a) {
 
 o1.inc();
 ```
-</div>
-<div>
 <h4 id='13'>Exercici 13</h4>
-
 ```javascript
 let o2 = (function () {
     let count = 1;
@@ -370,10 +328,7 @@ o2.setNotify(function (a) {
 });
 o2.inc();
 ```
-</div>
-<div>
 <h4 id='14'>Exercici 14</h4>
-
 ```javascript
 function Counter() {
     this.a = 1;
@@ -404,10 +359,7 @@ o3.setNotify(function (a) {
 });
 o3.inc();
 ```
-</div>
-<div>
 <h4 id='15'>Exercici 15</h4>
-
 ```javascript
 function Counter() {
     this.a = 1;
@@ -438,10 +390,7 @@ o3.setNotify(function (a) {
 });
 o3.inc();
 ```
-</div>
-<div>
 <h4 id='16'>Exercici 16</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -480,10 +429,7 @@ setTimeout(function () {
     console.log(future);
 }, 1000);
 ```
-</div>
-<div>
 <h4 id='17'>Exercici 17</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -518,10 +464,7 @@ setTimeout(function () {
     console.log(future);
 }, 1000);
 ```
-</div>
-<div>
 <h4 id='18'>Exercici 18</h4>
-
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -562,10 +505,7 @@ enhancedFuture.registerCallback(function(ef) {
     console.log(ef);
 });
 ```
-</div>
-<div>
 <h4 id='19'>Exercici 19</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -585,10 +525,7 @@ let f2 = function (error, result) {
 
 when(f1).do(f2);
 ```
-</div>
-<div>
 <h4 id='20'>Exercici 20</h4>
-
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -652,10 +589,7 @@ f3 = function(err1, err2, res1, res2) {
 
 when(f1).and(f2).do(f3);
 ```
-</div>
-<div>
 <h4 id='21'>Exercici 21</h4>
-
 ```javascript
 let composer = function (f, g) {
     return function (x) {
@@ -679,10 +613,7 @@ let f5 = composer(f3, f4);
 
 console.log(f5(3));
 ```
-</div>
-<div>
 <h4 id='22'>Exercici 22</h4>
-
 ```javascript
 let asyncComposer = function (f1, f2) {
     return function (x, f) {
@@ -724,10 +655,7 @@ f3 = asyncComposer(f1, f2);
 
 f3(3, function(error, result) { console.log(error, result) } );
 ```
-</div>
-<div>
 <h4 id='23'>Exercici 23</h4>
-
 ```javascript
 let p;
 
@@ -833,10 +761,7 @@ p.then(x => console.log('Apartat E: ' + x));
  * x = 2
  */
 ```
-</div>
-<div>
 <h4 id='24'>Exercici 24</h4>
-
 ```javascript
 let antipromise = function (promise) {
     return new Promise((resolve, reject) => {
@@ -849,10 +774,7 @@ let antipromise = function (promise) {
 antipromise(Promise.reject('Rejected')).then(console.log);
 antipromise(Promise.resolve('Accepted')).catch(console.log);
 ```
-</div>
-<div>
 <h4 id='25'>Exercici 25</h4>
-
 ```javascript
 let promiseToCallback = function (f) {
     return function (x, callback) {
@@ -871,10 +793,7 @@ isEvenCallback(2, (err, res) => console.log(err, res));
 isEven(3).then(() => console.log("OK"), () => console.log("KO"));
 isEvenCallback(3, (err, res) => console.log(err, res));
 ```
-</div>
-<div>
 <h4 id='26'>Exercici 26</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -898,10 +817,7 @@ readToPromise("a1.txt").then(x => console.log("Contents: ", x))
 readToPromise("notfound.txt").then(x => console.log("Contents: ", x))
     .catch(x => console.log("Error: ", x));
 ```
-</div>
-<div>
 <h4 id='27'>Exercici 27</h4>
-
 ```javascript
 const fs = require('fs');
 
@@ -923,10 +839,7 @@ let readToPromise2 = callbackToPromise(fs.readFile);
 readToPromise2("a1.txt").then(x => console.log("Contents: ", x))
     .catch(x => console.log("Error: ", x));
 ```
-</div>
-<div>
 <h4 id='28'>Exercici 28</h4>
-
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -977,10 +890,7 @@ let enhancedFuture = readIntoEnhancedFuture('a1.txt');
 let promise = enhancedFutureToPromise(enhancedFuture);
 promise.then(console.log);
 ```
-</div>
-<div>
 <h4 id='29'>Exercici 29</h4>
-
 ```javascript
 let mergedPromise = function (p) {
     return new Promise((resolve) => {
@@ -995,10 +905,7 @@ let mergedPromise = function (p) {
 mergedPromise(Promise.resolve(0)).then(console.log);
 mergedPromise(Promise.reject(1)).then(console.log);
 ```
-</div>
-<div>
 <h4 id='30'>Exercici 30</h4>
-
 ```javascript
 let functionPromiseComposer = (function (f1, f2) {
     return (function (x) {
@@ -1022,10 +929,7 @@ functionPromiseComposer(f1, f1)(3).then(console.log);
 let f3 = x => new Promise((resolve, reject) => reject('always fails'));
 functionPromiseComposer(f1, f3)(3).catch(console.log);
 ```
-</div>
-<div>
 <h4 id='31'>Exercici 31</h4>
-
 ```javascript
 let parallelPromise = function (p1, p2) {
     return new Promise((resolve, reject) => {
@@ -1056,10 +960,7 @@ let parallelPromise = function (p1, p2) {
 let p2 = parallelPromise(Promise.resolve(0), Promise.resolve(1));
 p2.then(console.log);
 ```
-</div>
-<div>
 <h4 id='32'>Exercici 32</h4>
-
 ```javascript
 let promiseBarrier = function(n) {
 	let list = [];
@@ -1123,5 +1024,4 @@ var [f1, f2] = promiseBarrier(2);
 Promise.resolve(1).then(f1).then(console.log);
 Promise.resolve(2).then(f2).then(console.log);
 ```
-</div>
 </html>
