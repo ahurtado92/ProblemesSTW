@@ -1,8 +1,5 @@
 <html>
 <head>
-<title>
-node.js
-</title>
 <link rel="stylesheet" type="text/css" href="readme.css">
 </head>
 <body>
@@ -78,6 +75,7 @@ Accedint al repositori no només us podreu descarregar el codi en zip i llest pe
 </div>
 <div>
 <h4 id='1'>Exercici 1</h4>
+
 ```javascript
 let f1 = function (param) {
     console.log(param);
@@ -88,6 +86,7 @@ f1(3);
 </div>
 <div>
 <h4 id='2'>Exercici 2</h4>
+
 ```javascript
 let f2 = function (a) {
     if (a >= 0){
@@ -104,6 +103,7 @@ console.log(f2(-1));
 </div>
 <div>
 <h4 id='3'>Exercici 3</h4>
+
 ```javascript
 let f3 = function (llista) {
     let llista2 = [];
@@ -121,6 +121,7 @@ console.log(l[0]+' '+l[1]+' '+l[2]);
 </div>
 <div>
 <h4 id='4'>Exercici 4</h4>
+
 ```javascript
 console.printaki = () => {
     console.log('aqui');
@@ -131,6 +132,7 @@ console.printaki();
 </div>
 <div>
 <h4 id='5'>Exercici 5</h4>
+
 ```javascript
 let f4 = function (a,b) {
     return a+b;
@@ -147,6 +149,7 @@ console.log(llistaB[0]+' '+llistaB[1]+' '+llistaB[2]+' '+llistaB[3]);
 </div>
 <div>
 <h4 id='6'>Exercici 6</h4>
+
 ```javascript
 let f2 = function (a) {
     if (a >= 0){
@@ -169,6 +172,7 @@ f5(1, f2, function(r) {
 </div>
 <div>
 <h4 id='7'>Exercici 7</h4>
+
 ```javascript
 let f7 = function () {
     let count = 1;
@@ -187,6 +191,7 @@ console.printaki2();
 </div>
 <div>
 <h4 id='8'>Exercici 8</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -221,6 +226,7 @@ f6(['a1.txt','a2.txt'],function (result) {
 </div>
 <div>
 <h4 id='9'>Exercici 9</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -256,6 +262,7 @@ f6(['a1.txt','a2.txt'],function (result) {
 </div>
 <div>
 <h4 id='10'>Exercici 10</h4>
+
 ```javascript
 /**
  * Tanto la función 'array.forEach()' como la función 'fs.readFile()' son funciones asíncronas
@@ -267,6 +274,7 @@ f6(['a1.txt','a2.txt'],function (result) {
 </div>
 <div>
 <h4 id='11'>Exercici 11</h4>
+
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -306,6 +314,7 @@ asyncMap(['a1.txt'], fs.readFile, function (a, b) {
 </div>
 <div>
 <h4 id='12'>Exercici 12</h4>
+
 ```javascript
 let O = function () {
     this.count = 0;
@@ -332,6 +341,7 @@ o1.inc();
 </div>
 <div>
 <h4 id='13'>Exercici 13</h4>
+
 ```javascript
 let o2 = (function () {
     let count = 1;
@@ -363,6 +373,7 @@ o2.inc();
 </div>
 <div>
 <h4 id='14'>Exercici 14</h4>
+
 ```javascript
 function Counter() {
     this.a = 1;
@@ -396,6 +407,7 @@ o3.inc();
 </div>
 <div>
 <h4 id='15'>Exercici 15</h4>
+
 ```javascript
 function Counter() {
     this.a = 1;
@@ -429,6 +441,7 @@ o3.inc();
 </div>
 <div>
 <h4 id='16'>Exercici 16</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -470,6 +483,7 @@ setTimeout(function () {
 </div>
 <div>
 <h4 id='17'>Exercici 17</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -507,6 +521,7 @@ setTimeout(function () {
 </div>
 <div>
 <h4 id='18'>Exercici 18</h4>
+
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -550,6 +565,7 @@ enhancedFuture.registerCallback(function(ef) {
 </div>
 <div>
 <h4 id='19'>Exercici 19</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -572,6 +588,7 @@ when(f1).do(f2);
 </div>
 <div>
 <h4 id='20'>Exercici 20</h4>
+
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -638,6 +655,7 @@ when(f1).and(f2).do(f3);
 </div>
 <div>
 <h4 id='21'>Exercici 21</h4>
+
 ```javascript
 let composer = function (f, g) {
     return function (x) {
@@ -664,6 +682,7 @@ console.log(f5(3));
 </div>
 <div>
 <h4 id='22'>Exercici 22</h4>
+
 ```javascript
 let asyncComposer = function (f1, f2) {
     return function (x, f) {
@@ -708,6 +727,7 @@ f3(3, function(error, result) { console.log(error, result) } );
 </div>
 <div>
 <h4 id='23'>Exercici 23</h4>
+
 ```javascript
 let p;
 
@@ -816,6 +836,7 @@ p.then(x => console.log('Apartat E: ' + x));
 </div>
 <div>
 <h4 id='24'>Exercici 24</h4>
+
 ```javascript
 let antipromise = function (promise) {
     return new Promise((resolve, reject) => {
@@ -831,6 +852,7 @@ antipromise(Promise.resolve('Accepted')).catch(console.log);
 </div>
 <div>
 <h4 id='25'>Exercici 25</h4>
+
 ```javascript
 let promiseToCallback = function (f) {
     return function (x, callback) {
@@ -852,6 +874,7 @@ isEvenCallback(3, (err, res) => console.log(err, res));
 </div>
 <div>
 <h4 id='26'>Exercici 26</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -878,6 +901,7 @@ readToPromise("notfound.txt").then(x => console.log("Contents: ", x))
 </div>
 <div>
 <h4 id='27'>Exercici 27</h4>
+
 ```javascript
 const fs = require('fs');
 
@@ -902,6 +926,7 @@ readToPromise2("a1.txt").then(x => console.log("Contents: ", x))
 </div>
 <div>
 <h4 id='28'>Exercici 28</h4>
+
 ```javascript
 const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
@@ -955,6 +980,7 @@ promise.then(console.log);
 </div>
 <div>
 <h4 id='29'>Exercici 29</h4>
+
 ```javascript
 let mergedPromise = function (p) {
     return new Promise((resolve) => {
@@ -972,6 +998,7 @@ mergedPromise(Promise.reject(1)).then(console.log);
 </div>
 <div>
 <h4 id='30'>Exercici 30</h4>
+
 ```javascript
 let functionPromiseComposer = (function (f1, f2) {
     return (function (x) {
@@ -998,6 +1025,7 @@ functionPromiseComposer(f1, f3)(3).catch(console.log);
 </div>
 <div>
 <h4 id='31'>Exercici 31</h4>
+
 ```javascript
 let parallelPromise = function (p1, p2) {
     return new Promise((resolve, reject) => {
@@ -1031,6 +1059,7 @@ p2.then(console.log);
 </div>
 <div>
 <h4 id='32'>Exercici 32</h4>
+
 ```javascript
 let promiseBarrier = function(n) {
 	let list = [];
