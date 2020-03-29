@@ -49,6 +49,7 @@ p.then(x => console.log('Apartat B: ' + x));
  */
 p = Promise.resolve(0).then(x => x + 1).then(x => x + 2).catch(x => x + 4).then(x => x + 8);
 p.then(x => console.log('Apartat C: ' + x));
+//TODO: Desenvolupar explicació apartat C.
 
 /**
  * Apartat D
@@ -56,6 +57,7 @@ p.then(x => console.log('Apartat C: ' + x));
  */
 p = Promise.reject(0).then(x => x + 1).then(x => x + 2).catch(x => x + 4).then(x => x + 8);
 p.then(x => console.log('Apartat D: ' + x));
+//TODO: Desenvolupar explicació apartat D.
 
 /**
  * Apartat E
@@ -63,3 +65,4 @@ p.then(x => console.log('Apartat D: ' + x));
  */
 p = Promise.reject(0).then(x => x + 1, null).catch(x => x + 2).catch(x => x + 4);
 p.then(x => console.log('Apartat E: ' + x));
+//TODO: Desenvolupar explicació apartat E.
