@@ -1,4 +1,3 @@
-//Pagina 8 problemas, ejercicio 32
 let promiseBarrier = function(n) {
 	let list = [];
 	let functions = [];
