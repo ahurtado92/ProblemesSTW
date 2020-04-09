@@ -8,7 +8,6 @@ var vm = new Vue({
     watch: {
         redness: function () {
             this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
-            console.log(this.activeColor)
         }
     },
 
