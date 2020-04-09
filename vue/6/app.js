@@ -1,9 +1,17 @@
 var vm = new Vue({
     el: '#app',
     data: {
-      redness: '',
-      activeColor: 'hsl(0,' + this.redness+ '%,50%)' ,
+        redness: 80,
+        activeColor: '' ,
     },
+
+    watch: {
+        redness: function () {
+            this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
+            console.log(this.activeColor)
+        }
+    },
+
     template: `
         <div>
             <!--<div v-bind:style="color: hsl(0,'{{redness}}'%,50%)">AM I RED?</div>-->
