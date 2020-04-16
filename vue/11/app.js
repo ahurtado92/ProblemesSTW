@@ -14,7 +14,9 @@ Vue.component('words-to-list', {
             console.log(this.strings);
         }
     },
-
+    //TODO: Ejercicio 11
+    // Funciona, pero a través de un botón que dispara una función.
+    // Se ha de implementar con watch, para que realice la función de forma automática.
 
     template: `
         <div>
