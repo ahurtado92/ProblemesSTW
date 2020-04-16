@@ -15,14 +15,14 @@ Vue.component('color-selector', {
 
 var vm = new Vue({
     el: '#app',
-data: {
-        color: null
-},
-template: `
-    <div style="border:solid red; display:flex;">
-        <color-selector v-on:color="color = $event"></color-selector>
-        <div v-bind:style="'color:' + color">TEXT</div>
-    </div>`,
+    data: {
+            color: null
+    },
+    template: `
+        <div style="border:solid red; display:flex;">
+            <color-selector v-on:color="color = $event"></color-selector>
+            <div v-bind:style="'color:' + color">TEXT</div>
+        </div>`,
 });
 
 
