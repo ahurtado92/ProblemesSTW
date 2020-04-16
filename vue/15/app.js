@@ -12,9 +12,9 @@ var vm = new Vue({
     },
     template: `
         <div>
-        <magic-input v-model="text" id="name"></magic-input>
-        <input v-model="text">
-        {{text}}
+            <magic-input v-model="text" id="name"></magic-input>
+            <input v-model="text">
+            {{text}}
         </div>`,
 });
 
