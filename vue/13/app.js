@@ -1,11 +1,29 @@
 Vue.component('switch-button', {
 
-    props: ['state'],
+    data: function() {
+        return {
+            state: "off",
+        }
+    },
+
+
+    methods: {
+        on: function () {
+            this.state = "on"
+            this.$emit('on');
+        },
+        off: function () {
+            this.state = "off"
+            this.$emit('off');
+        },
+    },
 
     template: `
-        <div style="border:solid;">
-            <button>ON</button>
-            <button disabled>OFF</button>
+        <div style="border:solid; width: 89px">
+            <button v-if="this.state==='off' || this.state===null" v-on:click="on()" >ON</button>
+            <button v-if="this.state==='on'" disabled >ON</button>
+            <button v-if="this.state==='on'" v-on:click="off()" >OFF</button>
+            <button v-if="this.state==='off' || this.state===null" disabled>OFF</button>
         </div>
     `,
 
