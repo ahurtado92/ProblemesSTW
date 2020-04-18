@@ -14,8 +14,7 @@ Vue.component('words-to-list', {
         <div>
             <ul>
                 <li v-for="string in strings" >{{wordsListSplit}}</li>
-            </ul>
-            
+            </ul>     
         </div>`,
 
 });
