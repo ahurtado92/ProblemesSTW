@@ -13,7 +13,7 @@ Vue.component('words-to-list', {
     template: `
         <div>
             <ul>
-                <li v-for="string in strings" >{{wordsListSplit}}</li>
+                <li v-for="word in wordsListSplit" >{{word}}</li>
             </ul>     
         </div>`,
 
