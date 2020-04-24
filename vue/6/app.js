@@ -5,6 +5,10 @@ var vm = new Vue({
         activeColor: '' ,
     },
 
+    mounted: function() {
+        this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
+    },
+
     watch: {
         redness: function () {
             this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
@@ -13,9 +17,8 @@ var vm = new Vue({
 
     template: `
         <div>
-            <!--<div v-bind:style="color: hsl(0,'{{redness}}'%,50%)">AM I RED?</div>-->
             <div v-bind:style="{ color: activeColor }" >AM I RED?</div>
-            <input type="range" min="1" max="100" v-model="redness">
+            <input type="range" min="0" max="100" v-model="redness">
             <div v-if="redness >= 70">YES!</div>
         </div>
     `,
