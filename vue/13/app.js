@@ -6,7 +6,6 @@ Vue.component('switch-button', {
         }
     },
 
-
     methods: {
         on: function () {
             this.state = "on"
