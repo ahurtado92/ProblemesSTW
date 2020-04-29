@@ -13,14 +13,10 @@
 </div>
 <div>
 <p>
-Aquesta entrega no ha sigut una fita d'una sola persona sinó que hi hem col·laborat dues persones per tal de portar-la a terme. El codi l'hem anat penjant a un repositori de lliure accès (GitHub) al que a continuació us facilitem l'enllaç:
+El codi s'ha anat penjant a un repositori de lliure accès (GitHub) al que a continuació es facilita l'enllaç:
 </p>
 <p>
-<href>
 <a href="https://github.com/tonioel/ProblemesSTW">Problemes STW</a>
-</p>
-<p>
-Accedint al repositori no només us podreu descarregar el codi en zip i llest per executar sinó que, a més podreu anar veient el progrès que hem fet per arribar a les diferents solucions.
 </p>
 <div style="page-break-after: always;">
 </div>
