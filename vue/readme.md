@@ -43,7 +43,6 @@ Accedint al repositori no només us podreu descarregar el codi en zip i llest pe
 <li><a href='#13'>Exercici 13</a></li>
 <li><a href='#14'>Exercici 14</a></li>
 <li><a href='#15'>Exercici 15</a></li>
-<li><a href='#16'>Exemple Components</a></li>
 
 </ol>
 </div>
@@ -52,988 +51,499 @@ Accedint al repositori no només us podreu descarregar el codi en zip i llest pe
 <h4 id='1'>Exercici 1</h4>
 
 ```javascript
-let f1 = function (param) {
-    console.log(param);
-};
+var vm = new Vue({
+    el: '#app',
+    data: {
+        counter: 0,
+    },
+    template: `<div>{{counter}}</div>`,
+});
 
-f1(3);
+setInterval(() => vm.counter++, 100);
 ```
 <h4 id='2'>Exercici 2</h4>
 
 ```javascript
-let f2 = function (a) {
-    if (a >= 0){
-        a=2*a
-    }else{
-        a=-1
-    }
-    return a
-};
+var vm = new Vue({
+    el: '#app',
+    data: {
+        a: 0,
+        b: 0,
+    },
+    methods: {
+      add: function () {
+        return parseFloat(this.a) + parseFloat(this.b);
+      }
+    },
+    template: `
+        <div>
+            <input v-model="a">
+            <input v-model="b">
+            {{add()}}
+        </div>
+    `,
+});
 
-console.log(f2(3));
-console.log(f2(-1));
+setInterval(() => vm.counter++, 100);
 ```
 <h4 id='3'>Exercici 3</h4>
 
 ```javascript
-let f3 = function (llista) {
-    let llista2 = [];
-
-    for (let key in llista) {
-        llista2[key] = llista[key]+23;
-    }
-
-    return llista2;
-};
-
-let l = f3([1,2,3]);
-console.log(l[0]+' '+l[1]+' '+l[2]);
+var vm = new Vue({
+    el: '#app',
+    data: {
+        buttonShown: true,
+    },
+    template: `
+        <div>
+            <button v-if="buttonShown" v-on:click="buttonShown=false">Click me!</button>
+        </div>
+    `,
+});
 ```
 <h4 id='4'>Exercici 4</h4>
 
 ```javascript
-console.printaki = () => {
-    console.log('aqui');
-};
-
-console.printaki();
+var vm = new Vue({
+    el: '#app',
+    data: {
+        text: "",
+    },
+    watch: {
+      text: function () {
+        if(this.text.length >= 5) {
+            this.text = "";
+        }
+      }
+    },
+    template: `
+        <div>
+            <input v-model="text">
+        </div>
+    `,
+});
 ```
 <h4 id='5'>Exercici 5</h4>
 
 ```javascript
-let f4 = function (a,b) {
-    return a+b;
-};
-
-let llistaA = [1,2,3,4];
-
-let llistaB = llistaA.map(function (val) {
-    return f4(val, 23);
+var vm = new Vue({
+    el: '#app',
+    data: {
+      styleVar: "",
+    },
+    template: `
+        <div>
+            <input 
+                v-on:keydown="styleVar='background-color: red;'" 
+                v-on:keyup="styleVar=''" 
+                v-bind:style="styleVar"
+            >
+        </div>
+    `,
 });
-
-console.log(llistaB[0]+' '+llistaB[1]+' '+llistaB[2]+' '+llistaB[3]);
 ```
 <h4 id='6'>Exercici 6</h4>
 
 ```javascript
-let f2 = function (a) {
-    if (a >= 0){
-        a=2*a
-    }else{
-        a=-1
-    }
-    return a
-};
+var vm = new Vue({
+    el: '#app',
+    data: {
+        redness: 80,
+        activeColor: '' ,
+    },
 
-function f5(a,b,callback) {
-    //a és un objecte, b és una funció, i c és una funció
-    callback(b(a));
-}
+    mounted: function() {
+        this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
+    },
 
-f5(1, f2, function(r) {
-    console.log(r);
+    watch: {
+        redness: function () {
+            this.activeColor = 'hsl(0,'+this.redness+'%,50%)';
+        }
+    },
+
+    template: `
+        <div>
+            <div v-bind:style="{ color: activeColor }" >AM I RED?</div>
+            <input type="range" min="0" max="100" v-model="redness">
+            <div v-if="redness >= 70">YES!</div>
+        </div>
+    `,
 });
 ```
 <h4 id='7'>Exercici 7</h4>
 
 ```javascript
-let f7 = function () {
-    let count = 1;
-    console.printaki2 = () =>{
-        console.log('aqui '+ count);
-        count++;
-    }
-};
+var vm = new Vue({
+    el: '#app',
+    data: {
+        a: "false",
+        b: "false",
+        c: "false",
+    },
 
-f7();
+    watch: {
+        a: function () {
+            this.b = this.a.toString();
+            this.c = this.b.toString();
+        }
+    },
 
-console.printaki2();
-console.printaki2();
-console.printaki2();
+    template: `
+        <div>
+            <input type="checkbox" id="checkbox" name="checkbox" value="true" v-model="a"  />
+            <label for="check"> {{a + " " + b + " " + c}} </label><br>
+        </div>
+    `,
+});
+
+document.getElementById("checkbox").checked = false;
 ```
 <h4 id='8'>Exercici 8</h4>
 
 ```javascript
-const fs = require('fs');
+var vm = new Vue({
+    el: '#app',
+    data: {
+        items: [
+            { name: 'Jaime Sommers', phone: '311-555-2368' },
+            { name: 'Ghostbusters', phone: '555-2368' },
+            { name: 'Mr. Plow', phone:'’636-555-3226' },
+            { name: 'Gene Parmesan: Private Eye', phone: '555-0113' },
+            { name: 'The A-Team', phone: '555-6162' },
+        ],
+    },
 
-let f6 = function (llista, callback) {
-    let result = [];
+    watch: {
 
-    let readFiles = new Promise((resolve, reject) => {
-        llista.forEach(function (element, index, array) {
-            fs.readFile('./' + element, 'utf8', function (err, data) {
-                if (err) {
-                    throw err;
-                }
-                console.log('data: ' + data);
-                result.push(data);
+    },
 
-                if (index === array.length - 1) {
-                    resolve();
-                }
-            });
-        });
-    });
-
-    readFiles.then(() => {
-        callback(result);
-    });
-};
-
-f6(['a1.txt','a2.txt'],function (result) {
-    console.log(result)
+    template: `
+        <div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                </tr>
+                <tr v-for="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.phone}}</td>
+                </tr>
+            </table>
+        </div>
+    `,
 });
 ```
 <h4 id='9'>Exercici 9</h4>
 
 ```javascript
-const fs = require('fs');
+var vm = new Vue({
+    el: '#app',
+    data: {
+        state: 0,
+    },
 
-f6 = function (llista, callback) {
-    let result = [];
-    let basePath = './';
-
-    let readFiles = new Promise((resolve, reject) => {
-        llista.forEach(function (element, index, array) {
-            fs.readFile(basePath + element, 'utf8', function (err, data) {
-                if (err) {
-                    throw err;
+    methods: {
+        changeState: function () {
+            if (this.state == 0) {
+                this.state = 1;
+            } else {
+                if (this.state == 1){
+                    this.state = 2;
+                } else {
+                    this.state = 0;
                 }
-                console.log('data: ' + data);
-                result[index] = data;
+            }
+        }
+    },
 
-                if (index === array.length - 1) {
-                    resolve();
-                }
-            });
-        });
-    });
-
-    readFiles.then(() => {
-        callback(result);
-    });
-};
-
-f6(['a1.txt','a2.txt'],function (result) {
-    console.log(result)
+    template: `
+        <div>
+            <div style="display: inline-block; width:30px;">
+            
+                <div v-if="state == 2" style="height: 30px; background-color: red"></div>
+                <div v-else="state == 2" style="height: 30px; background-color: indianRed"></div>
+                
+                <div v-if="state == 1" style="height: 30px; background-color: yellow"></div>
+                <div v-else="state == 1" style="height: 30px; background-color: khaki"></div>
+                
+                <div v-if="state == 0" style="height: 30px; background-color: lawngreen"></div>
+                <div v-else="state == 0" style="height: 30px; background-color: seagreen"></div>
+                
+                <input type="button" @click="changeState" value="Switch" >
+                
+            </div>
+        </div>
+    `,
 });
 ```
 <h4 id='10'>Exercici 10</h4>
 
 ```javascript
-/**
- * Tanto la función 'array.forEach()' como la función 'fs.readFile()' son funciones asíncronas
- * por lo que, de implementar la variable 'index' de esa forma podría desembocar en un problema
- * de sincronicidad a la hora de hacer los accesos o las asignaciones a los arrays, causando así
- * que no se produzca un resultado consistente y/o correcto.
- */
+var vm = new Vue({
+    el: '#app',
+    data: {
+        items: [
+            { name: 'Jaime Sommers', phone: '311-555-2368' },
+            { name: 'Ghostbusters', phone: '555-2368' },
+            { name: 'Mr. Plow', phone:'’636-555-3226' },
+            { name: 'Gene Parmesan: Private Eye', phone: '555-0113' },
+            { name: 'The A-Team', phone: '555-6162' },
+        ],
+    },
+
+    methods: {
+        deleteItem: function (index) {
+            this.items.splice(index, 1);
+        },
+    },
+
+    template: `
+        <div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                </tr>
+                <tr v-for="(item, index) in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.phone}}</td>
+                    <td><button @click="deleteItem(index)">Delete</button></td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </div>
+    `,
+});
 ```
 <h4 id='11'>Exercici 11</h4>
 
 ```javascript
-const fs = require('fs');
-const {StringDecoder} = require('string_decoder');
-const decoder = new StringDecoder('utf8');
+Vue.component('words-to-list', {
 
-function asyncMap (list, f, callback2) {
-    let basePath = './';
-    let resultList = [];
-    let err = null;
-    //...
-    let map = new Promise((resolve, reject) => {
+    data: function () {
+        return {
+            wordsListSplit: this.words.split(' ')
+        }
+    },
 
-        list.map((fileName, index, array) => {f(basePath + fileName, function (err, result) {
-            if (err != null) {
-                callback2(err, resultList);
-                throw err;
-            }
+    props: {
+        words: String,
+    },
 
-            resultList[index] = decoder.write(result);
+    template: `
+        <div>
+            <ul>
+                <li v-for="word in wordsListSplit" >{{word}}</li>
+            </ul>     
+        </div>`,
 
-            if (index === array.length - 1) {
-                decoder.end();
-                resolve({'err' : err, 'resultList' : resultList});
-            }
-        })});
-    });
+});
 
-    map.then((vector) => {
-        callback2(vector['err'], vector['resultList']);
-    });
-}
+var vm = new Vue({
+    el: '#app',
 
-asyncMap(['a1.txt'], fs.readFile, function (a, b) {
-    console.log(b);
+    template: `
+        <div>
+            <words-to-list id="words-to-list" words="Lorem ipsum dolor sit amet"> </words-to-list>
+        </div>`,
+
 });
 ```
 <h4 id='12'>Exercici 12</h4>
 
 ```javascript
-let O = function () {
-    this.count = 0;
-    this.notify = null;
+Vue.component('card', {
 
-    this.inc = function () {
-        this.count++;
+    props: ['personalData'],
 
-        if ((this.notify != null) && (this.notify instanceof Function)) {
-            this.notify(this.count);
+    template: `
+        <div class="card">
+            <div>
+                <img v-bind:src="personalData.picture">
+            </div>
+            <div>
+                <h1>{{personalData.name}}</h1>
+            </div>
+            <div>{{personalData.email}}</div>
+            <div>{{personalData.phone}}</div>
+        </div>`,
+
+});
+
+var vm = new Vue({
+    el: '#app',
+    data: {
+        person: {
+            name: 'My Name',
+            picture: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM82Mz1HwAFqgJP3gasfwAAAABJRU5ErkJggg==',
+            email: 'me@somerandomdomain.com',
+            phone: '+00 00 000 0000',
         }
-    };
-};
-
-o1 = new O();
-
-o1.count = 1;
-o1.notify = function (a) {
-    console.log(a);
-};
-
-o1.inc();
+    },
+    template: `
+        <div style="display:flex;">
+            <card id="card" v-bind:personal-data="person"></card>
+        </div>
+    `,
+});
 ```
 <h4 id='13'>Exercici 13</h4>
 
 ```javascript
-let o2 = (function () {
-    let count = 1;
-    let notify = null;
-    return {
-        inc: function () {
-            count++;
+Vue.component('switch-button', {
 
-            if (notify != null) {
-                notify(count);
-            }
-        },
-        count: function () {
-            return count;
-        },
-        setNotify(value) {
-            if (value instanceof Function) {
-                notify = value;
-            }
+    data: function() {
+        return {
+            state: "off",
         }
-    };
-})();
+    },
 
-o2.setNotify(function (a) {
-    console.log(a);
+    methods: {
+        on: function () {
+            this.state = "on"
+            this.$emit('on');
+        },
+        off: function () {
+            this.state = "off"
+            this.$emit('off');
+        },
+    },
+
+    template: `
+        <div style="border:solid; width: 89px">
+            <button v-if="this.state==='off' || this.state===null" v-on:click="on()" >ON</button>
+            <button v-if="this.state==='on'" disabled >ON</button>
+            <button v-if="this.state==='on'" v-on:click="off()" >OFF</button>
+            <button v-if="this.state==='off' || this.state===null" disabled>OFF</button>
+        </div>
+    `,
+
 });
-o2.inc();
+
+var vm = new Vue({
+    el: '#app',
+    data: {
+        state: null
+    },
+
+    template: `
+        <div>
+            <switch-button 
+                v-on:on="state='just turned on'"
+                v-on:off="state='just turned off'"
+            >
+            </switch-button>
+            {{state}}
+        </div>`,
+});
 ```
 <h4 id='14'>Exercici 14</h4>
 
 ```javascript
-function Counter() {
-    this.a = 1;
-    this.notify = 1;
+Vue.component('color-selector', {
 
-    this.inc = (function () {
-        this.a++;
-        if ((this.notify != null) && (this.notify instanceof Function)) {
-            this.notify(this.a);
+    data: function(){
+        return {
+            r: "0",
+            g: "0",
+            b: "0",
+            c: "",
         }
-    });
+    },
 
-    this.count = (function () {
-        return this.a;
-    });
+    mounted: function() {
+        this.c = "rgb("+this.r+","+this.g+","+this.b+")"
+    },
 
-    this.setNotify = (function (value) {
-        if (value instanceof Function) {
-            this.notify = value;
-        }
-    });
+    watch: {
+        r: function () {
+            this.c = "rgb("+this.r+","+this.g+","+this.b+")"
+            this.$emit('color',this.c);
+        },
+        g: function () {
+            this.c = "rgb("+this.r+","+this.g+","+this.b+")"
+            this.$emit('color',this.c);
+        },
+        b: function () {
+            this.c = "rgb("+this.r+","+this.g+","+this.b+")"
+            this.$emit('color',this.c);
+        },
+    },
 
-}
 
-let o3 = new Counter();
-o3.setNotify(function (a) {
-    console.log(a);
+
+    template: `
+        <div style="border:solid; display:flex;">
+            <div v-bind:style="'background-color:' + c +'; width:110px; height:110px;'"></div>
+            <div style="display:flex; flex-direction:column; padding:10px;">
+                <div>R: <input type="range" min=0 max=255 v-model="r"> red value</div>
+                <div>G: <input type="range" min=0 max=255 v-model="g"> green value</div>
+                <div>B: <input type="range" min=0 max=255 v-model="b"> blue value</div>
+            </div>
+        </div>
+    `,
+
 });
-o3.inc();
+
+var vm = new Vue({
+    el: '#app',
+    data: {
+            color: null
+    },
+    template: `
+        <div style="border:solid red; display:flex; width: 600px">
+            <color-selector v-on:color="color = $event"></color-selector>
+            <div v-bind:style="'color:' + color">TEXT</div>
+        </div>`,
+});
+
 ```
 <h4 id='15'>Exercici 15</h4>
 
 ```javascript
-function Counter() {
-    this.a = 1;
-    this.notify = 1;
+Vue.component('magic-input', {
 
-    this.inc = (function () {
-        this.a++;
-        if ((this.notify != null) && (this.notify instanceof Function)) {
-            this.notify(this.a);
+    data: function () {
+        return {
+            magicText: '',
         }
-    });
+    },
 
-    this.count = (function () {
-        return this.a;
-    });
+    props: ['value'],
 
-    this.setNotify = (function (value) {
-        if (value instanceof Function) {
-            this.notify = value;
+    created: function() {
+        this.magicText = this.value.replace(/./g, x => x.toUpperCase() == x ? x.toLowerCase() : x.toUpperCase());
+    },
+
+    watch: {
+        value: function(){
+            this.magicText = this.value.replace(/./g, x => x.toUpperCase() == x ? x.toLowerCase() : x.toUpperCase());
+        },
+        magicText: function() {
+            this.$emit('input', this.magicText.replace(/./g, x => x.toUpperCase() == x ? x.toLowerCase() : x.toUpperCase()));
         }
-    });
+    },
 
-}
+    template: `
+        <input v-model="magicText">
+    `,
 
-let o3 = new Counter();
-o3.setNotify(function (a) {
-    console.log(a);
-});
-o3.inc();
-```
-<h4 id='16'>Exercici 16</h4>
-
-```javascript
-const fs = require('fs');
-
-let Future = (function (result) {
-    this.result = result || null;
-    this.isDone = this.result != null;
-
-    return {
-        isDone: this.isDone,
-        result: this.result,
-    };
 });
 
-let future = new Future();
-
-function readIntoFuture(fileName) {
-    let basePath = './';
-
-    fs.readFile(basePath + fileName, 'utf8', function (err, data) {
-        if (err) {
-            throw err;
-        }
-
-        future = new Future(data);
-
-    });
-
-    return new Future();
-}
-
-future = readIntoFuture('a1.txt');
-
-console.log(future);
-
-setTimeout(function () {
-    console.log(future);
-}, 1000);
-```
-<h4 id='17'>Exercici 17</h4>
-
-```javascript
-const fs = require('fs');
-
-let Future = (function (result) {
-    this.result = result || null;
-    this.isDone = this.result != null;
-
-    return {
-        isDone: this.isDone,
-        result: this.result,
-    };
-});
-
-let future = new Future();
-
-function asyncToFuture(f) {
-    return function (fileName) {
-        f(fileName, function (err, data) {
-            if (err) {
-                throw err;
-            }
-
-            future = new Future(data);
-        });
-        return new Future();
-    }
-}
-
-let readIntoFuture2 = asyncToFuture(fs.stat);
-future = readIntoFuture2('a1.txt');
-setTimeout(function () {
-    console.log(future);
-}, 1000);
-```
-<h4 id='18'>Exercici 18</h4>
-
-```javascript
-const fs = require('fs');
-const {StringDecoder} = require('string_decoder');
-const decoder = new StringDecoder('utf8');
-
-function asyncToEnhancedFuture(action) {
-    let registeredCallback = null;
-    let enhancedFuture = {
-        isDone: false,
-        result: null,
-        registerCallback: (callback) => {
-            if (enhancedFuture.isDone) {
-                callback(enhancedFuture);
-            } else {
-                registeredCallback = callback;
-            }
-        }
-    };
-    return (args) => {
-        action(args, (error, result) => {
-            enhancedFuture.isDone = true;
-            enhancedFuture.result = decoder.write(result);
-
-            if (registeredCallback !== null) {
-                registeredCallback(enhancedFuture);
-            }
-
-            decoder.end();
-        });
-        return enhancedFuture;
-    };
-}
-
-// Test the thing...
-let readIntoEnhancedFuture = asyncToEnhancedFuture(fs.readFile);
-let enhancedFuture = readIntoEnhancedFuture('a1.txt');
-enhancedFuture.registerCallback(function(ef) {
-    console.log(ef);
+var vm = new Vue({
+    el: '#app',
+    data: {
+            text: "Hola"
+    },
+    template: `
+        <div>
+            <magic-input v-model="text"></magic-input>
+            <input v-model="text">
+            {{text}}
+        </div>`,
 });
 ```
-<h4 id='19'>Exercici 19</h4>
 
-```javascript
-const fs = require('fs');
-
-when = function (f1){
-    if (!(this instanceof when)) return new when(f1);
-    this.do = function (f2) {
-        f1(f2);
-    }
-};
-
-let f1 = function (callback) {
-    fs.readFile('a1.txt', callback);
-};
-let f2 = function (error, result) {
-    console.log(result.toString());
-};
-
-when(f1).do(f2);
-```
-<h4 id='20'>Exercici 20</h4>
-
-```javascript
-const fs = require('fs');
-const {StringDecoder} = require('string_decoder');
-const decoder = new StringDecoder('utf8');
-
-when = function (f){
-    this.promises = [];
-    this.results = {};
-
-    this.promises.push(new Promise((resolve, reject) => {
-        f (function (err, data) {
-            if (err) {
-                throw err;
-            }
-
-            this.results['error1'] = err;
-            this.results['result1'] = decoder.write(data);
-
-            resolve();
-        });
-    }));
-
-    this.and = (function (g) {
-        this.promises.push(new Promise((resolve, reject) => {
-            g(function (err, data) {
-                if (err) {
-                    throw err;
-                }
-
-                this.results['error2'] = err;
-                this.results['result2'] = decoder.write(data);
-
-                decoder.end();
-                resolve();
-            });
-        }));
-
-        return this;
-    });
-
-    this.do = (function (h) {
-        Promise.all(this.promises).then(() => {
-            h(this.results['error1'], this.results['error2'], this.results['result1'], this.results['result2']);
-        });
-    });
-
-    return this;
-};
-
-f1 = function(callback) {
-    fs.readFile('a1.txt', callback)
-};
-
-f2 = function(callback) {
-    fs.readFile('a2.txt', callback);
-};
-
-f3 = function(err1, err2, res1, res2) {
-    console.log(res1, res2);
-};
-
-when(f1).and(f2).do(f3);
-```
-<h4 id='21'>Exercici 21</h4>
-
-```javascript
-let composer = function (f, g) {
-    return function (x) {
-        return f(g(x));
-    }
-};
-
-let f1 = function (a) {
-    return a + 1;
-};
-
-let f3 = composer(f1, f1);
-
-console.log(f3(3));
-
-let f4 = function (a) {
-    return a * 3;
-};
-
-let f5 = composer(f3, f4);
-
-console.log(f5(3));
-```
-<h4 id='22'>Exercici 22</h4>
-
-```javascript
-let asyncComposer = function (f1, f2) {
-    return function (x, f) {
-        f2(x, function (error, res) {
-            if (error != null) {
-                throw error;
-            }
-
-            f1 (res, function (err, data) {
-                if (err) {
-                    throw err;
-                }
-
-                f(err, data);
-            });
-        });
-    };
-};
-
-let f1 = function (a, callback) {
-    callback(null, a + 1);
-};
-
-let f3 = asyncComposer(f1, f1);
-
-f3 (3, function (error, result) {
-    console.log(result);
-});
-
-f1 = function(a, callback) {
-    callback(null, a + 1)
-};
-
-f2 = function(a, callback) {
-    callback("error", "")
-};
-
-f3 = asyncComposer(f1, f2);
-
-f3(3, function(error, result) { console.log(error, result) } );
-```
-<h4 id='23'>Exercici 23</h4>
-
-```javascript
-let p;
-
-/**
- * Apartat A
- * @type {Promise<number>}
- */
-p = Promise.resolve(0).then(x => x + 1).then(x => x + 2).then(x => x + 4);
-p.then(x => console.log('Apartat A: ' + x));
-
-/**
- * La Promesa es resol retornant un 0, al primer 'then' tenim que:
- * x = 0
- * y, a més a això li sumem 1, amb el que ans queda:
- * x = x + 1 = 1
- * Al segon 'then' fem:
- * x = x + 2 = 1 + 2 = 3
- * Al tercer i últim 'then' fem:
- * x = x + 4 = 3 + 4 = 7
- * Finalment tenim que:
- * x = 7
- */
-
-/**
- * Apartat B
- * @type {Promise<never>}
- */
-p = Promise.reject(0).then(x => x + 1).catch(x => x + 2).then(x => x + 4);
-p.then(x => console.log('Apartat B: ' + x));
-
-/**
- * La promesa es rebutja retornant un 0, com la promesa ha sigut rebutjada ens saltem el 'then', amb el que tenim que:
- * x = 0
- * Al catch, com la promesa va ser rebutjada, no l'ignorem i fem:
- * x = x + 2 = 0 + 2 = 2
- * Al 'then' després del catch no l'ignorem i fem:
- * x = x + 4 = 2 + 4 = 6
- * Amb el que tenim que:
- * x = 6
- */
-
-/**
- *
- */
-
-/**
- * Apartat C
- * @type {Promise<number>}
- */
-p = Promise.resolve(0).then(x => x + 1).then(x => x + 2).catch(x => x + 4).then(x => x + 8);
-p.then(x => console.log('Apartat C: ' + x));
-
-/**
- * La Promesa es resol retornant un 0, al primer 'then' tenim que:
- * x = 0
- * i, a més a això li sumem 2, amb el que ans queda:
- * x = x + 1 = 1
- * Al segon 'then' fem:
- * x = x + 2 = 1 + 2 = 3
- * Al catch, com la promesa va ser resolta, l'ignorem i no el fem.
- * Al tercer i últim 'then' fem:
- * x = x + 8 = 3 + 8 = 11
- * Finalment tenim que:
- * x = 11
- */
-
-
-/**
- * Apartat D
- * @type {Promise<never>}
- */
-p = Promise.reject(0).then(x => x + 1).then(x => x + 2).catch(x => x + 4).then(x => x + 8);
-p.then(x => console.log('Apartat D: ' + x));
-
-/**
- * La Promesa es rebutja retornant un 0.
- * Com la promesa ha sigut rebutjada ens saltem els dos primers 'then', amb el que tenim que:
- * x = 0
- * Al catch, com la promesa va ser rebutjada, no l'ignorem i fem:
- * x = x + 4 = 0 + 4 = 4
- * Al 'then' després del catch no l'ignorem i fem:
- * x = x + 8 = 4 + 8 = 12
- * Amb el que tenim que:
- * x = 12
- */
-
-
-/**
- * Apartat E
- * @type {Promise<never>}
- */
-p = Promise.reject(0).then(x => x + 1, null).catch(x => x + 2).catch(x => x + 4);
-p.then(x => console.log('Apartat E: ' + x));
-
-/**
- * La Promesa es rebutja retornant null.
- * Com la promesa ha sigut rebutjada ens saltem el primer 'then', amb el que tenim que:
- * x = null
- * Al primer catch, com la promesa va ser rebutjada, no l'ignorem i fem:
- * x = x + 2 = null + 2 = 2
- * Al segon catch, com ja s'ha executat un catch, l'ignorem:
- * Amb el que tenim que:
- * x = 2
- */
-```
-<h4 id='24'>Exercici 24</h4>
-
-```javascript
-let antipromise = function (promise) {
-    return new Promise((resolve, reject) => {
-        promise.then((data) => {
-            reject(data + ' then rejected!');
-        }).catch((data) => resolve(data + ' then accepted!'));
-    });
-};
-
-antipromise(Promise.reject('Rejected')).then(console.log);
-antipromise(Promise.resolve('Accepted')).catch(console.log);
-```
-<h4 id='25'>Exercici 25</h4>
-
-```javascript
-let promiseToCallback = function (f) {
-    return function (x, callback) {
-        f(x).then((response) => callback(null, response), (response) => callback(response, null));
-    };
-};
-
-let isEven = x => new Promise((resolve, reject) => {
-    x % 2 ? reject(x) : resolve(x);
-});
-
-let isEvenCallback = promiseToCallback(isEven);
-
-isEven(2).then(() => console.log("OK"), () => console.log("KO"));
-isEvenCallback(2, (err, res) => console.log(err, res));
-isEven(3).then(() => console.log("OK"), () => console.log("KO"));
-isEvenCallback(3, (err, res) => console.log(err, res));
-```
-<h4 id='26'>Exercici 26</h4>
-
-```javascript
-const fs = require('fs');
-
-let readToPromise = function (file) {
-    let basePath = './';
-
-    return new Promise((resolve, reject) => {
-        fs.readFile(basePath + file, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-
-            resolve(data);
-        });
-    });
-};
-
-readToPromise("a1.txt").then(x => console.log("Contents: ", x))
-    .catch(x => console.log("Error: ", x));
-
-readToPromise("notfound.txt").then(x => console.log("Contents: ", x))
-    .catch(x => console.log("Error: ", x));
-```
-<h4 id='27'>Exercici 27</h4>
-
-```javascript
-const fs = require('fs');
-
-let callbackToPromise = function (f) {
-    return function (file) {
-        return new Promise((resolve, reject) => {
-            f(file, function (err, data) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-            });
-        });
-    };
-};
-
-let readToPromise2 = callbackToPromise(fs.readFile);
-readToPromise2("a1.txt").then(x => console.log("Contents: ", x))
-    .catch(x => console.log("Error: ", x));
-```
-<h4 id='28'>Exercici 28</h4>
-
-```javascript
-const fs = require('fs');
-const {StringDecoder} = require('string_decoder');
-const decoder = new StringDecoder('utf8');
-
-var enhancedFutureToPromise = function () {
-    return new Promise(
-        (resolve, reject) => {
-            enhancedFuture.registerCallback(ef => {
-                resolve(ef.result);
-            })
-        }
-    );
-}
-
-var asyncToEnhancedFuture = function (f) {
-    return (fileName) => {
-        let callback = null;
-
-        let resFuture = {
-            isDone: false,
-            result: null,
-            registerCallback: function (p) {
-                if (resFuture.isDone){
-                    p(resFuture);
-                } else {
-                    callback = p;
-                }
-            }
-        };
-
-        f(fileName, (err, data) => {
-            resFuture.result = decoder.write(data);
-            resFuture.isDone = true;
-            if (callback !== null){
-                callback(resFuture);
-            }
-
-            decoder.end();
-        });
-
-        return resFuture;
-    }
-}
-
-readIntoEnhancedFuture = asyncToEnhancedFuture(fs.readFile);
-let enhancedFuture = readIntoEnhancedFuture('a1.txt');
-let promise = enhancedFutureToPromise(enhancedFuture);
-promise.then(console.log);
-```
-<h4 id='29'>Exercici 29</h4>
-
-```javascript
-let mergedPromise = function (p) {
-    return new Promise((resolve) => {
-        p.then((data) => {
-            resolve(data);
-        }).catch((data) => {
-            resolve(data);
-        });
-    });
-};
-
-mergedPromise(Promise.resolve(0)).then(console.log);
-mergedPromise(Promise.reject(1)).then(console.log);
-```
-<h4 id='30'>Exercici 30</h4>
-
-```javascript
-let functionPromiseComposer = (function (f1, f2) {
-    return (function (x) {
-        return new Promise((resolve, reject) => {
-            f2(x).then((result) => {
-                f1(result).then((result) => {
-                    resolve(result);
-                }).catch((result) => {
-                    reject(result);
-                });
-            }).catch((result) => {
-                reject(result);
-            });
-        });
-    });
-});
-
-let f1 = x => new Promise((resolve, reject) => resolve(x+1));
-functionPromiseComposer(f1, f1)(3).then(console.log);
-
-let f3 = x => new Promise((resolve, reject) => reject('always fails'));
-functionPromiseComposer(f1, f3)(3).catch(console.log);
-```
-<h4 id='31'>Exercici 31</h4>
-
-```javascript
-let parallelPromise = function (p1, p2) {
-    return new Promise((resolve, reject) => {
-        let rp1;
-        let rp2;
-        let halfWay = false;
-
-        p1.then(x => {
-            rp1 = x;
-            if (halfWay) {
-                resolve([rp1, rp2]);
-            } else {
-                halfWay = true;
-            }
-        });
-
-        p2.then(x => {
-            rp2 = x;
-            if (halfWay) {
-                resolve([rp1, rp2]);
-            } else {
-                halfWay = true;
-            }
-        });
-    });
-};
-
-let p2 = parallelPromise(Promise.resolve(0), Promise.resolve(1));
-p2.then(console.log);
-```
-<h4 id='32'>Exercici 32</h4>
-
-```javascript
-let promiseBarrier = function(n) {
-	let list = [];
-	let functions = [];
-	let counter = 0;
-	let params = [];
-
-	for(let i=0; i<n; i++) {
-		list[i] = function(x1) { // f1, f2, f3
-			counter++;
-
-			return new Promise((resolve, reject) => {
-				//resolve(x1); 
-				functions[i] = resolve;
-				params[i] = x1;
-
-				// (2)
-				if(counter === n) {
-					for (let j=0; j<n; j++){
-						let r = functions[j];
-						r(params[j]);
-					}
-				}
-			});
-		};
-	}
-
-	return list;
-};
-
-var [f1, f2] = promiseBarrier(2);
-Promise.resolve(0)
-	.then(x => { console.log("c1 s1"); return x; })
-	.then(x => { console.log("c1 s2"); return x; })
-	.then(x => { console.log("c1 s3"); return x; })
-	.then(x => { console.log("c1 s4"); return x; })
-	.then(f1);
-Promise.resolve(0)
-	.then(f2)
-	.then(x => { console.log("c2 s1"); return x; })
-	.then(x => { console.log("c2 s2"); return x; });
-
-var [f1, f2, f3] = promiseBarrier(3);
-Promise.resolve(0)
-	.then(x => { console.log("c1 s1"); return x; })
-	.then(x => { console.log("c1 s2"); return x; })
-	.then(x => { console.log("c1 s3"); return x; })
-	.then(f1)
-	.then(x => { console.log("c1 s4"); return x; });
-Promise.resolve(0)
-	.then(x => { console.log("c2 s1"); return x; })
-	.then(f2)
-	.then(x => { console.log("c2 s2"); return x; });
-Promise.resolve(0)
-	.then(f3)
-	.then(x => { console.log("c3 s1"); return x; })
-	.then(x => { console.log("c3 s2"); return x; })
-	.then(x => { console.log("c3 s3"); return x; });
-
-var [f1, f2] = promiseBarrier(2);
-Promise.resolve(1).then(f1).then(console.log);
-Promise.resolve(2).then(f2).then(console.log);
-```
 </html>
