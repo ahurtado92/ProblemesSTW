@@ -16,7 +16,7 @@
 El codi s'ha anat penjant a un repositori de lliure accès (GitHub) al que a continuació es facilita l'enllaç:
 </p>
 <p>
-<a href="https://github.com/tonioel/ProblemesSTW">Problemes STW</a>
+<a href="https://github.com/tonioel/ProblemesSTW/tree/master/vue">Problemes STW - Vue</a>
 </p>
 <div style="page-break-after: always;">
 </div>
@@ -24,7 +24,7 @@ El codi s'ha anat penjant a un repositori de lliure accès (GitHub) al que a con
 <div>
 <h2 style="text-align: center">Índex</h2>
 <ol>
-<li><a href='#1'>Exercici 1</a></li>
+<lwi><a href='#1'>Exercici 1</a></lwi>
 <li><a href='#2'>Exercici 2</a></li>
 <li><a href='#3'>Exercici 3</a></li>
 <li><a href='#4'>Exercici 4</a></li>
