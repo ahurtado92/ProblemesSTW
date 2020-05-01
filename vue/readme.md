@@ -6,7 +6,7 @@
 </body>
 <header>
 <h1 style="text-align: center;">STW [Problemes]</h1>
-<h2 style="text-align: center">node.js</h2>
+<h2 style="text-align: center">Vue</h2>
 <p id='noms' style="text-align: center; font-weight: bold;">Antonio Hurtado (NIU: 1358933)</p>
 </header>
 <div style="page-break-after: always;">
